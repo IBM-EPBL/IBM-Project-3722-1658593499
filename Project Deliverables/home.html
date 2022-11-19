@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Chronic Kidney Disease prediction</title>
+<style>
+
+.header{
+  background-color:#6e5096;
+  text-align: center;
+  padding: 10px;
+  opacity:0.9;
+  color:#98a3b5;
+   overflow: hidden;
+   
+  }
+   
+.navbar a:hover {
+	  background-color:#512a63;
+	}
+  
+.navbar {
+	  overflow: hidden;
+	  background-color: #6e5096;
+	}
+
+.navbar a {
+	  float: left;
+	  font-size: 17.5px;
+	  color:#98a3b5 ;
+	  text-align: center;
+	  font-size: 20px;
+	  padding: 14px 16px;
+	  text-decoration: none;
+	}
+.content {
+ 
+  width: 600px;
+  height: 500px;
+  opacity:1; 
+  color:#373b37;
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.text{
+color: #2f3270;
+font-size: 20px;
+opacity:1;
+
+  }
+  
+h3{
+	color:#ffffff;
+	font-size:20px;
+	font-style:italic;
+}
+h1{
+color:#ffffff;
+font-style:italic;
+}
+  
+</style>
+</head>
+<body>
+<body style= "background-image:url('https://www.kidneyfund.org/sites/default/files/styles/fifty_fifty/public/media/images/Kidneys/purple-kidneys-illustrated.webp?itok=JWBPpP1B');background-size:72%">
+	
+
+<div class = "header">
+   <h1>EARLY DETECTION OF CHRONIC KIDNEY DISEASE </h1>
+</div>
+<div class = "content">
+	 
+ <div style="color:black;" class="ml-container">
+	<form action="{{ url_for('predict') }}" method="POST">
+		<br>
+<center><table>
+<tr><h1>PLEASE ENTER YOUR DETAILS BELOW : </h1></tr>
+	<tr>
+<th><h3>Age :</h3></th>
+	<th><input id="one" name="age" placeholder="Range: (2 - 90)" required="required"></th>	
+		<br>
+	</tr>
+	<tr>
+<th><h3>Blood Pressure :</h3></th>
+	<th>	<input id="two" name="bp" placeholder="Range: (50 - 180)" required="required"></th>
+		<br></tr>
+<tr><th><h3>Specific Gravity :</h3></th>
+		<th><input id="three" name="sg" placeholder="Ex: (1.005,1.010,1.015,1.020,1.025)" required="required">
+		<br></tr>
+<tr><th><h3>Albumin :</h3></th>
+	<th>	<input id="four" name="al" placeholder="(0,1,2,3,4,5)" required="required"></th>
+		<br></tr>
+<tr><th><h3>Sugar :</h3></th>
+	<th>	<input id="five" name="su" placeholder="(0,1,2,3,4,5)" required="required"></th>
+		<br></tr>
+<tr><th><h3>Red Blood Cells :</h3></th>
+		<th><input id="six" name="rbc" placeholder="in Millions/cmm" required="required"></th>
+<br></tr>
+<tr><th><h3>Pus Cell :</h3></th>
+	<th>	<input id="seven" name="pc" placeholder="Normal = 0, Abnormal = 1" required="required"></th>
+		<br></tr>
+<tr><th><h3>Pus Cell clumps :</h3></th>
+<th>		<input id="eight" name="pcc" placeholder="Present = 1, NotPresent = 0" required="required"></th>
+		<br></tr>
+<tr><th><h3>Bacteria :</h3></th>
+<th>		<input id="nine" name="ba" placeholder="Present = 1, NotPresent = 0" required="required"></th>
+		<br></tr>
+<tr><th><h3>Blood Glucose Random :</h3></th>
+<th>		<input id="ten" name="bgr" placeholder="Range: (22 - 490)" required="required"></th>
+		<br></tr>
+<tr><th><h3>Blood Urea :</h3></th>
+<th>		<input id="eleven" name="bu" placeholder="Range: (1.5 - 391.0)" required="required"></th>
+		<br></tr>
+<tr><th><h3>Serum Creatinine :</h3></th>
+	<th>	<input id="twelve" name="sc" placeholder="Range: (0.4 - 76.0)" required="required"></th>
+		<br></tr>
+<tr><th><h3>Sodium :</h3></th>
+<th>		<input id="thirteen" name="sod" placeholder="Range: (4.5 - 163.0)" required="required"></th>
+		<br></tr>
+<tr><th><h3>Potassium :</h3></th>
+<th>		<input id="fourteen" name="pot" placeholder="Range: (2.5 - 47.0)" required="required"></th>
+		<br></tr>
+<tr><th><h3>Hemoglobin :</h3></th>
+<th>		<input id="fifteen" name="hemo" placeholder="in gms" required="required"></th>
+		<br></tr>
+<tr><th><h3>Packed Cell Volume :</h3></th>
+<th>		<input id="sixteen" name="pcv" placeholder="Range: (9 - 54)" required="required"></th>
+		<br></tr>
+<tr><th><h3>White Blood Cell Count :</h3></th>
+<th>		<input id="seventeen" name="wc" placeholder="Range: (2200 - 26400)" required="required"></th>
+		<br></tr>
+<tr><th><h3>Red Blood Cell Count :</h3></th>
+<th>		<input id="eighteen" name="rc" placeholder="Range: (2.1 - 8.0)" required="required"></th>
+		<br></tr>
+<tr><th><h3>Hypertension :</h3></th>
+<th>		<input id="nineteen" name="htn" placeholder="Yes = 1, No=0" required="required"></th>
+		<br></tr>
+<tr><th><h3>Diabetes Mellitus :</h3></th>
+<th>		<input id="twenty" name="dm" placeholder="Yes = 1, No=0" required="required"></th>
+		<br></tr>
+<tr><th><h3>Coronary Artery Disease :</h3></th>
+		<th><input id="twentyone" name="cad" placeholder="Yes = 1, No = 0" required="required"></th>
+		<br></tr>
+<tr><th><h3>Appetite : </h3></th>
+<th>		<input id="twentytwo" name="appet" placeholder="Good = 1, Poor = 0" required="required"></th>
+		<br></tr>
+<tr><th><h3>Pedal Edema :</h3></th>
+	<th>	<input id="twentythree" name="pe" placeholder="Yes = 1, No = 0" required="required"></th>
+		<br></tr>
+<tr><th><h3>Anemia :</h3></th>
+	<th>	<input id="twentyfour" name="ane" placeholder="Yes = 1, No = 0" required="required"></th>
+		<br></tr>
+ </h3>
+ </table></center>
+ <button id="sub" type = "submit">SUBMIT</button>
+ <br>
+ <br>
+ </form>
+ </div>
+
+</body>
+
+</div>
+<div id = "thirdpage">
+	<body>
+
+		<form action="{{ url_for('predict')}}" method="post">
+	
+			<!-- Result -->
+			<div style="color:black;background-color:#9fd19f;background-size:80%" class="results" >
+			<div style="background-color:#9fd19f;" >	{% if prediction==1 %}</div>
+					<h1><span class='danger'>You have CHRONIC KIDNEY DISEASE.<br><br>Please Consult Doctor.</span></h1>
+					<center><img src="https://c8.alamy.com/zooms/9/8ea7bd956d1e43a983c204388178159b/2fm8rdr.jpg" alt="STROKE Image"></center>
+
+			<div style="background-color:#9fd19f;" >	{% elif prediction==0 %}</div>
+					<h1><span class='safe'>Congratulations!<br><br>You DON'T have Chronic Kidney Disease.</span></h1>
+					<center><img src="https://www.theurologistpune.com/wp-content/uploads/2019/12/kidney-excercise.jpg" alt="STROKE Image"></center>
+					{% endif %}
+			</div>
+		
+	
+		</form>
+	</body>
+</div>
+
+</body>
+</html>
+
+
+
+
